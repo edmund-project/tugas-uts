@@ -56,6 +56,3 @@ def treatments(request):
     context = {}
     return render(request, 'treatments.html', context)
 
-def aboutus(request):
-    context = {} 
-    return render(request, 'aboutus.html', context)              
