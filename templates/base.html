@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>{% block title %}Website{% endblock %}</title>
+</head>
+<body>
+
+   <!-- navbar -->
+   <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">COVID-19</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/symptoms">Symptoms</a>
+            <a class="nav-item nav-link" href="/prevention">Prevention</a>
+            <a class="nav-item nav-link" href="/treatments">Treatments</a>
+            {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="/logout">Logout</a>
+            {% else %}
+            <a class="nav-item nav-link" href="/login">Login</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">We Fight Covid-19 <br><span>TOGETHER</span></h1>
+      </div>
+    </div>
+   
+
+    <!-- panel -->
+    
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-10 panel" style="margin-top: -140px; background-color: white;">
+          <div class="row">
+            <div class="col-lg">
+              <img src="{% static 'images/images1.jpg'%}" alt="images1" class="float-left">
+              <h5>WEAR MASK</h5>
+              <p style="color: black;">Clean your hands before you put your mask on, as well as before and after you take it off, and after you touch it at any time.</p>
+            </div>
+            <div class="col-lg">
+              <img src="{% static 'images/images2.jpg'%}" alt="images2" class="float-left">
+              <h5>WASH HAND</h5>
+              <p style="color: black;">Before and after caring for someone at home who is sick with vomiting or diarrhea</p>
+            </div>
+            <div class="col-lg">
+              <img src="{% static 'images/people.jpg'%}" alt="people" class="float-left">
+              <h5>SOCIAL DISTANCING</h5>
+              <p style="color: black;">stay at least 6 feet (about 2 arm lengths) from other people who are not from your household in both indoor and outdoor spaces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% block content %}
+    <div class="row justify-content-center">
+      <h1 style="color: red; font-weight: bold; padding-top: 30px;">INDONESIA</h1>
+      
+    </div>
+
+    <div class="container">
+      <div style="margin-top: -25px;" class="row">
+        <div class="col-lg-4">
+          <div class="bg-primary text-white" style="padding: 30px 40px; margin-top: 40px; border-radius: 5px; box-shadow: 0px 3px 20px rgba(0, 0, 0, 1);">
+            <div class="row">
+              <div class="col-lg-6">
+                <h4>CASES</h4>
+                <h2 id="data-cases">{{ cases }}</h2>
+              </div>
+              <div class="col-lg-4">
+                <img src="{% static 'images/sad.svg'%}" alt="sad" style="width: 100px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="bg-danger text-white" style="padding: 30px 40px; margin-top: 40px; border-radius: 5px; box-shadow: 0px 3px 20px rgba(0, 0, 0, 1);">
+            <div class="row">
+              <div class="col-lg-6">
+                <h4>DEATHS</h4>
+                <h2 id="data-deaths">{{ deaths }}</h2>
+              </div>
+              <div class="col-lg-4">
+                <img src="{% static 'images/cry.svg'%}" alt="cry" style="width: 100px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="bg-success text-white" style="padding: 30px 40px; margin-top: 40px; border-radius: 5px; box-shadow: 0px 3px 20px rgba(0, 0, 0, 1);">
+            <div class="row">
+              <div class="col-lg-6">
+                <h4>RECOVERED</h4>
+                <h2 id="data-recovered">{{ recovered }}</h2>
+              </div>
+              <div class="col-lg-4">
+                <img src="{% static 'images/happy.svg'%}" alt="happy" style="width: 100px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg gambar">
+          <img src="{% static 'images/covid.jpg'%}" alt="covid" class="img-fluid">
+        </div>
+        <div class="col-lg text">
+          <h2>What Is <span>Corona Virus?</span></h2>
+          <p style="color: black;">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose when an infected person coughs or sneezes, so it’s important that you also practice respiratory etiquette. </p>
+        </div>
+      </div>
+    </div>
+    {% endblock %}    
+    <footer style="height: 100px; width: 100%; margin-top: 100px;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <p style="margin-top: 40px;">&copy; copyright 2021 | build by <a href="https://www.instagram.com/edmund0409/">Edmund</a></p>
+        </div>
+      </div>
+    </footer>
+
+
+  
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+
+
+
